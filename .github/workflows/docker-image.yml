@@ -1,18 +1,4 @@
-name: Docker Image CI
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag pjlink-restapi:$(date +%s)
+- name: Publish Image
+  uses: matootie/github-docker@v3.0.0
+  with:
+    accessToken: ${{ github.token }}
